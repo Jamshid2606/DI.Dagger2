@@ -1,0 +1,17 @@
+package com.jama.dagger2inandroid
+
+import android.app.Application
+import com.jama.dagger2inandroid.di.component.ApplicationComponent
+import com.jama.dagger2inandroid.di.component.DaggerApplicationComponent
+
+class App :Application() {
+    companion object{
+        lateinit var applicationComponent: ApplicationComponent
+    }
+    override fun onCreate() {
+        super.onCreate()
+        applicationComponent = DaggerApplicationComponent
+            .builder()
+            .build()
+    }
+}
