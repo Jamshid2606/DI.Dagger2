@@ -3,6 +3,7 @@ package com.jama.dagger2inandroid
 import android.app.Application
 import com.jama.dagger2inandroid.di.component.ApplicationComponent
 import com.jama.dagger2inandroid.di.component.DaggerApplicationComponent
+import com.jama.dagger2inandroid.di.module.DatabaseModule
 
 class App :Application() {
     companion object{
@@ -12,6 +13,7 @@ class App :Application() {
         super.onCreate()
         applicationComponent = DaggerApplicationComponent
             .builder()
+            .databaseModule(DatabaseModule(applicationContext))
             .build()
     }
 }
